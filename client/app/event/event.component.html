@@ -1,0 +1,178 @@
+
+
+<div class="container">
+<app-navbar></app-navbar>
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="!isLoading && !isDetail">
+      <!-- <h4 class="card-header">Events ({{events.length}})</h4> -->
+      <div class="card-block">
+        <div *ngIf="events.length === 0">
+          There are no events in the DB. Add a new event below.
+        </div>
+        <!-- <div *ngIf="!isEditing">
+          <div class="row">
+            <div class="col-sm-6" *ngFor="let event of events">
+              <div class="card">
+                <div class="card-block">
+                  <h3 class="card-title">{{ event.title }}</h3>
+                  <p class="card-text">{{ event.description }}</p>
+                  <a routerLink="/detailevent/{{event._id}}" href="#" class="btn btn-primary">Detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div *ngIf="isEditing">
+          <form #form="ngForm" (ngSubmit)="editEvent(event)" style="display:inline">
+            <div class="form-group">
+              <input class="form-control" type="text" name="title" [(ngModel)]="event.title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="description" [(ngModel)]="event.description" placeholder="Description" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="image" [(ngModel)]="event.image" placeholder="Image" step="any" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="startdate" [(ngModel)]="event.startdate" placeholder="Start Day" step="any" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="enddate" [(ngModel)]="event.enddate" placeholder="End Day" step="any" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="location" [(ngModel)]="event.location" placeholder="Location" step="any" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" name="peopleamount" [(ngModel)]="event.peopleamount" placeholder="People" step="any" min="0" step="1" required>
+            </div>
+            <div class="input-group">
+              <select class="form-control" name="game_id" [(ngModel)]="event.game.name">
+                <option value="" selected disabled>Select Game</option>
+                <option *ngFor="let game of games">
+                  {{ game.name }}
+                </option>
+              </select>
+            </div>
+            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+          </form>
+          <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+        </div> 
+      </div>
+    </div>
+    <div class="card" *ngIf="!isEditing && auth.loggedIn">
+      <h4 class="card-header">Add New Event</h4>
+      <div class="card-block">
+        <form [formGroup]="addEventForm" (ngSubmit)="addEvent()">
+          <div class="form-group">
+            <input class="form-control" type="text" name="title" formControlName="title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="description" formControlName="description" placeholder="Description">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="startdate" formControlName="startdate" placeholder="Start Day">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="enddate" formControlName="enddate" placeholder="End Day">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="image" formControlName="image" placeholder="Image" />
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="location" formControlName="location" placeholder="Location" />
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="number" name="peopleamount" formControlName="peopleamount" placeholder="People" min="0" step="1" />
+          </div>
+
+          <div class="input-group">
+            <select class="form-control" name="game_id" formControlName="game_id">
+              <option value="" selected disabled>Select Game</option>
+              <option *ngFor="let game of games" value="{{ game._id }}">
+                {{ game.name }}
+              </option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="!addEventForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isLoading && !isDetail">
+  <h4 class="card-header">Current Event ({{events.length}})</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Start Day</th>
+          <th>End Day</th>
+          <th>Game</th>
+          <th *ngIf="auth.loggedIn">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="events.length === 0">
+        <tr>
+          <td colspan="4">There are no events in the DB. Add a new event below.</td>
+        </tr>  
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let event of events">
+          <td>{{event.title}}</td>
+          <td>{{event.description}}</td>
+          <td><img src="{{event.image}}" alt="Image" style="width: 100px; height:80px"></td>
+          <td>{{event.startdate}}</td>
+          <td>{{event.enddate}}</td>
+          <td>{{event.game.name}}</td>
+          <td *ngIf="auth.loggedIn">
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(event)"><i class="fa fa-pencil"></i> Edit</button> 
+            <button class="btn btn-sm btn-danger" (click)="deleteProduct(event)"><i class="fa fa-trash"></i> Delete</button>
+          </td>
+        </tr>  
+      </tbody>
+      <!-- <tbody *ngIf="!isEditing">
+        <tr>
+          <td colspan="4">
+            <form class="form-inline" #form="ngForm" (ngSubmit)="editEvent(event)" style="display:inline">
+              <div class="form-group">
+                <input class="form-control" type="text" name="title" [(ngModel)]="event.title" placeholder="Title" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="description" [(ngModel)]="event.description" placeholder="Description" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="image" [(ngModel)]="event.image" placeholder="Image" step="any" min="0" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="startdate" [(ngModel)]="event.startdate" placeholder="Start Day" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="enddate" [(ngModel)]="event.enddate" placeholder="End Day" required>
+              </div>
+              <div class="input-group">
+                <select class="form-control" [(ngModel)]="game_id" name="game_id">
+                  <option value="" selected disabled>Select Category</option>
+                  <option *ngFor="let game of games" value="{{ game._id }}">
+                    {{ game.name }}
+                  </option>
+                </select>
+              </div>
+              <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+            </form>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+          </td>
+        </tr>
+      </tbody> -->
+    </table>
+  </div>
+</div>
+
+</div>
+<app-footer></app-footer> 

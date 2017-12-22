@@ -1,0 +1,34 @@
+
+
+<div class="container">
+<app-navbar></app-navbar>
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="!isLoading && !isDetail">
+      <h4 class="card-header">Events ({{events.length}})</h4>
+      <div class="card-block">
+        <div *ngIf="events.length === 0">
+          There are no events in the DB. Add a new event below.
+        </div>
+        <div *ngIf="!isEditing">
+          <div class="row">
+            <div class="col-sm-6" *ngFor="let event of events">
+              <div class="card">
+                <div class="card-block">
+                  <h3 class="card-title">{{ event.title }}</h3>
+                  <p class="card-text">{{ event.description }}</p>
+                  <a routerLink="/detailevent/{{event._id}}" href="#" class="btn btn-primary">Detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<app-footer></app-footer> 

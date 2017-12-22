@@ -1,0 +1,20 @@
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <a routerLink="/login" routerLinkActive="active" *ngIf="!auth.loggedIn">
+      <button class="w3-button w3-black w3-right w3-padding w3-border" style="margin:10px 10px">Login</button>
+    </a>
+    <a routerLink="/register" routerLinkActive="active" *ngIf="!auth.loggedIn">
+      <button class="w3-button w3-black w3-right w3-padding w3-border" style="margin:10px 10px">Register </button>
+    </a>
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <img src="../../assets/imgs/logo/logo01.png" alt="logo" style="width: 95px; height:80px">
+  </div>
+  <!-- <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-text-red"><b>EVENT</b></h1>
+  </div> -->
+  <div class="w3-display-bottomleft w3-padding-large w3-deep-orange">
+    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" style="color: black">Phann Dom</a>
+  </div>
+</div>
+
+
+

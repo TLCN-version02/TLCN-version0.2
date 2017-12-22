@@ -1,0 +1,102 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <app-loading [condition]="isLoading"></app-loading>
+
+  <form class="navbar-form" role="search">
+    <div class="dropdown">
+      <input type="text" class="form-control" placeholder="Search">
+      <button type="submit" class="btn btn-default">Search</button>
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tên sự kiện<span class="caret"></span></button>
+    </div>  
+  </form>
+
+  <!-- Main content -->
+  <!-- <section class="content">
+              <div class="row">
+                <table class="table">
+                  <thead class="thead-inverse">
+                    <tr>
+                      <th>Stt</th>
+                      <th>Họ và tên</th>
+					  <th>Ngày tháng năm sinh</th>
+                      <th>Số điện thoại</th>
+                      <th>E-mail</th>
+                      <th>Kĩ Năng</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Nguyễn Phước Nghĩa</td>
+                      <td>18/01/1995</td>
+                      <td>01239750799</td>
+                      <td>NghiaNP@fsoft.com.vn</td>
+                      <td>Java</td>
+                    </tr>
+					
+					<tr>
+					  <th scope="row">2</th>
+                      <td>Lê Trọng Tín</td>
+                      <td>30/08/1995</td>
+                      <td>01887339489</td>
+                      <td>TinLT@fsoft.com.vn</td>
+                      <td>Java</td>
+                    </tr>
+					
+					<tr>
+					  <th scope="row">3</th>
+                      <td>Vũ Văn Điệp</td>
+                      <td>15/06/1995</td>
+                      <td>01237339489</td>
+                      <td>DiepVV@fsoft.com.vn</td>
+                      <td>Java</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+  </section> -->
+  <div class="card">
+  <h4 class="card-header">Current Client ({{clients.length}})</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Job</th>
+          <th>Skill</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="clients.length === 0">
+        <tr>
+          <td colspan="4">There are no clients who take part in this event</td>
+        </tr>  
+      </tbody>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{client.fullname}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.phonenumber}}</td>
+          <td>{{client.job}}</td>
+          <td>{{client.skill}}</td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="btn-group">
+    <ul class="pagination pagination-large" id="">
+      <li class="disabled"><span>«</span></li>
+      <li class="active"><span>1</span></li>
+      <li><span>2</span></li>
+      <li><span>3</span></li>
+      <li><a rel="next">»</a></li> 
+    </ul>
+  </div>
+
+</div>
+  <app-footer></app-footer>
+
