@@ -1,0 +1,122 @@
+
+
+<div class="container">
+<app-navbar></app-navbar>
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="media">
+  <div class="media-header" style="text-align: center; margin: 15px 0px">
+    <h3>{{ event.title }}</h3>
+    <h5> {{ event.location }}, <span class="w3-opacity">{{ event.startdate | date }}</span></h5>
+    <img class="d-flex mr-3" src="{{ event.image }}" alt="Generic placeholder image" style="width: 100%">
+  </div>
+ 
+  <div class="media-body">
+    
+    <p> Description: {{ event.description }}</p>
+    <p> Start Day: {{ event.startdate | date }}</p>
+    <p> End Day: {{ event.enddate | date }}</p>
+    <!-- <p> Game: {{ event.game }} </p> -->
+    <!-- <p *ngFor="let game of games">{{ game.name }}</p> -->
+  </div>
+  <div *ngIf="auth.loggedIn">
+      <button class="btn btn-sm btn-warning" (click)="enableEditing(event)"><i class="fa fa-pencil"></i> Edit</button> 
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="!isLoading && !isDetail">
+      <!-- <h4 class="card-header">Events ({{events.length}})</h4> -->
+      <div class="card-block">
+        <div *ngIf="events.length === 0">
+          There are no events in the DB. Add a new event below.
+        </div>
+        <!-- <div *ngIf="!isEditing">
+          <div class="row">
+            <div class="col-sm-6" *ngFor="let event of events">
+              <div class="card">
+                <div class="card-block">
+                  <h3 class="card-title">{{ event.title }}</h3>
+                  <p class="card-text">{{ event.description }}</p>
+                  <a routerLink="/detailevent/{{event._id}}" href="#" class="btn btn-primary">Detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div *ngIf="isEditing">
+          <form #form="ngForm" (ngSubmit)="editEvent(event)" style="display:inline">
+            <div class="form-group">
+              <input class="form-control" type="text" name="title" [(ngModel)]="event.title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="description" [(ngModel)]="event.description" placeholder="Description" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="image" [(ngModel)]="event.image" placeholder="Image" step="any" required>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="startdate" [(ngModel)]="event.startdate"
+                ng2-datetime-picker
+                date-only="true"
+                step="any"
+                required  
+              />
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="enddate" [(ngModel)]="event.enddate"
+                ng2-datetime-picker
+                date-only="true"
+                step="any"
+                required  
+              />
+            </div>
+            <!-- <div class="form-group">
+              <input class="form-control" type="text" name="startdate" [(ngModel)]="event.startdate" placeholder="Start Day" step="any" required>
+            </div> -->
+            <!-- <div class="form-group">
+              <input class="form-control" type="text" name="enddate" [(ngModel)]="event.enddate" placeholder="End Day" step="any" required>
+            </div> -->
+            
+            <!-- <div class="form-group">
+              <input class="form-control" type="text" name="location" [(ngModel)]="event.location" placeholder="Location" step="any" required>
+            </div> -->
+            <div class="input-group">
+              <input class="form-control" type="text" name="location" [(ngModel)]="event.location" placeholder="Location" step="any" required style="width:800px; padding:0 0 0 10px">
+              <select class="form-control" type="text" name="location" [(ngModel)]="event.location" step="any" required style="width:268px">
+                <option value="" selected disabled>Location</option>
+                <option value="Tầng 3 Phòng Sentosa Khách Sạn Fortuna, 6B Láng Hạ, Quận Ba Đình, Hà Nội">Quận Ba Đình, Hà Nội</option>
+                <option value="AIM Academy, District 1, Ho Chi Minh City">Quận 1, TP Hồ Chí Minh</option>
+                <option value="IEMBA Program Office, District 3, Ho Chi Minh City">Quận 3, TP Hồ Chí Minh</option>
+                <option value="Maga Town Office, Binh Thanh District, Ho Chi Minh City">Quận Bình Thạnh, TP Hồ Chí Minh</option>  
+                <option value="Bắc Giang">Bắc Giang</option>
+                <option value="Bắc Kạn">Bắc Kạn</option>
+                <option value="Bắc Kạn">Bắc Kạn</option>
+                <option value="Bắc Ninh">Bắc Ninh</option>
+                <option value="Bến Tre">Bến Tre</option>
+                <option value="Bình Định">Bình Định</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="number" name="peopleamount" [(ngModel)]="event.peopleamount" placeholder="People" step="any" min="0" step="1" required>
+            </div>
+            <div class="input-group">
+              <select class="form-control" name="game_id" [(ngModel)]="event.game.name">
+                <option value="" selected disabled>Select Game</option>
+                <option *ngFor="let game of games">
+                  {{ game.name }}
+                </option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!addEventForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+          </form>
+          <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<app-footer></app-footer> 

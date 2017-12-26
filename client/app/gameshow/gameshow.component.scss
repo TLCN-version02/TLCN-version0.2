@@ -1,0 +1,24 @@
+p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+}
+.bg {
+    /* The image used */
+    background-image: url("https://cdn.tgdd.vn/Files/2008/06/17/3649/image-VONG-QUAY-MAY-MAN-CUA-NOKIA-FPT.gif");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#random{
+    height:50px;
+    font-weight:bold;
+    font-size: 30px;
+    background:#333;
+    color:white;
+}

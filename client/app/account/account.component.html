@@ -1,0 +1,95 @@
+
+
+<div class="container">
+  <app-navbar></app-navbar>
+  <app-loading [condition]="isLoading"></app-loading>
+
+  <app-toast [message]="toast.message"></app-toast>
+
+  <div class="card" *ngIf="!isLoading">
+    <h4 class="card-header">Edit profile</h4>
+      <div class="card-block">
+        <form #accountForm="ngForm" (ngSubmit)="save(user)">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="User Name" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+            <input class="form-control" type="text" name="fullname" [(ngModel)]="user.fullname" placeholder="Full Name" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
+            <input class="form-control" type="text" name="birthday" [(ngModel)]="user.birthday"
+              ng2-datetime-picker
+              date-only="true"
+              step="any"
+              required  
+            />
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-male"></i></span>
+            <input class="form-control" type="text" name="sex" [(ngModel)]="user.sex" placeholder="Sex" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+            <input class="form-control" type="text" name="address" [(ngModel)]="user.address" placeholder="Address" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
+            <input class="form-control" type="number" name="phonenumber" [(ngModel)]="user.phonenumber" placeholder="Phone Number" required>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="!accountForm.form.valid">
+            <i class="fa fa-save"></i> Save
+          </button>
+        </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-heading panel-title">User Profile</h2>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div> <img alt="User Pic" src="{{user.image}}" class="img-circle img-responsive center-block" style="width: 200px; height: 200px; margin-bottom: 15px;"> </div>
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Username:</td>
+              <td>{{user.fullname}}</td>
+            </tr>
+            <tr>
+              <td>Birthday:</td>
+              <td>{{user.birthday|date}}</td>
+            </tr>
+
+            <!-- <tr> -->
+            <tr>
+              <td>Sex:</td>
+              <td>{{user.sex}}</td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td>{{user.address}}</td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr>
+              <td>Phone Number:</td>
+              <td>{{user.phonenumber}}</td>
+            </tr>
+            <!-- </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer> 

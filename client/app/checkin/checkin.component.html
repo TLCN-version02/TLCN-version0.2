@@ -1,0 +1,61 @@
+<app-toast [message]="toast.message"></app-toast>
+<div class="container">
+    <div class="w3-card w3-center" style="margin: 0px 250px">
+        <h4 class="card-header" style="text-align: center">Checkin</h4>
+        <div class="card-block">
+            <form [formGroup]="addClientForm" (ngSubmit)="addClient()">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                    <input class="form-control" type="text" name="fullname" formControlName="fullname" placeholder="Full Name" autofocus>
+                </div>
+                <!-- <div class="form-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input class="form-control" type="text" name="birthday" formControlName="birthday" placeholder="Birth Day" autofocus>
+                </div> -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email" autofocus>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    <input class="form-control" type="text" name="phonenumber" formControlName="phonenumber" placeholder="Phone" autofocus>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                    <select class="form-control" type="text" name="job" formControlName="job" placeholder="Job" autofocus>
+                    <option value="" selected disabled>Job</option>
+                    <option value="IT">IT</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Bussinessman">Bussiness Man</option>
+                    <option value="Student">Student</option>
+                    <option value="Bank">Banker</option>
+                    <option value="Disigner">Disigner</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                    <select class="form-control" type="text" name="skill" formControlName="skill" placeholder="Skill" autofocus>
+                    <option value="" selected disabled>Skill</option>
+                    <option value="Analytics">Analytics</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Database">Database</option>
+                    <option value="Manage">Manage</option>
+                    <option value="Cure">Cure</option>
+                    <option value="Design">Design</option>
+                    <option value="Counting Money">Counting Money</option>
+                    <option value="Search">Search</option>
+                    <option value="Business">Business</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success"[disabled]="!addClientForm.valid">CHECK IN</button>  
+
+            </form> 
+        </div>
+    </div>
+
+
+</div>
+
+
+
