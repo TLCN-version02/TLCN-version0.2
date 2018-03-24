@@ -1,0 +1,70 @@
+
+<div class="container">
+  <div class="card card-outline-danger pointer">
+    <h4 class="card-header card-danger" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">My Events</h4>
+    <div class="collapse" id="collapseExample">
+      <ul class="list-group list-group-flush">
+        <a class="list-group-item">Event 01</a>
+        <a class="list-group-item">Event 02</a>
+        <a class="list-group-item">Event 03</a>
+      </ul>
+    </div>
+  </div>
+
+  <form class="navbar-form" role="search">
+    <div class="dropdown">
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchname" name="searchname"[(ngModel)]="searchtext" placeholder="Search for full name" style="width:350px; margin-right: 10px">
+        <input type="text" class="form-control" id="searchjob" name="searchjob"[(ngModel)]="searchtext01" placeholder="Search for job" style="width:350px; margin-right: 10px">
+        <input type="text" class="form-control" id="searchskill" name="searchskill"[(ngModel)]="searchtext02" placeholder="Search for skill" style="width:350px; margin-right: 10px">
+      </div>
+    </div>  
+  </form>
+
+  <div class="card card-outline-primary">
+  <h4 class="card-header">Participated Clients </h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Job</th>
+          <th>Skill</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Phạm Vũ Hoàng Tuấn</td>
+          <td>phanndom1604@gmail.com</td>
+          <td>0971428325</td>
+          <td>Programmer</td>
+          <td>Coding</td>
+        </tr>
+        <tr>
+          <td>Mạnh Văn Bùi</td>
+          <td>manhbui@gmail.com</td>
+          <td>0971428325</td>
+          <td>Programmer</td>
+          <td>Coding</td>
+        </tr>    
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="btn-group">
+    <ul class="pagination pagination-large" id="">
+      <li class="disabled"><span>«</span></li>
+      <li class="active"><span>1</span></li>
+      <li><span>2</span></li>
+      <li><span>3</span></li>
+      <li><a rel="next">»</a></li> 
+    </ul>
+  </div>
+
+</div>
+
+
+

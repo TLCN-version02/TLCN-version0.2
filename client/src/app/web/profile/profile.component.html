@@ -1,0 +1,62 @@
+<div class="container main-content">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Thông tin cá nhân</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="./../../../assets/web/img/imguser/{{urlHinh}}" class="img-circle img-responsive"> </div>
+            <!-- <input type="file" id="selectImg" style="padding-top:80px;"> -->
+            <table class="table table-user-information">
+              <tbody>
+                <tr>
+                  <td>Họ và tên</td>
+                  <td>{{username}}</td>
+                </tr>
+                <tr>
+                  <td>Ngày tham gia</td>
+                  <td>{{register_date}}</td>
+                </tr>
+                <tr>
+                  <td>Ngày sinh</td>
+                  <td>{{dateOfBirth}}</td>
+                </tr>
+
+                <!-- <tr> -->
+                <tr>
+                  <td>Giới tính</td>
+                  <td>{{sex}}</td>
+                </tr>
+                <tr>
+                  <td>Địa chỉ</td>
+                  <td>{{address}}</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td><a href="#">{{email}}</a></td>
+                </tr>
+                <tr>
+                  <td>Số điện thoại</td>
+                  <td>{{phone}}</td>
+                </tr>
+                <!-- </tr> -->
+                <tr>
+                  <td>CV</td>
+                  <td><input type="file" id="cv">
+                    <!-- <span class="help-block">Định dạng: .PDF, .DOC, .DOCX</span>
+                    <span class="help-block">Kích thước tối đa: 2MB</span></td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <a class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa thông tin</a>
+      </div>
+
+    </div>
+  </div>
+</div>

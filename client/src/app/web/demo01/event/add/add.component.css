@@ -1,0 +1,11 @@
+/* // custom "Create event page" */
+.page-header {
+  padding-bottom: 9px;
+  margin: 10px 0 45px;
+  border-bottom: 1px solid #C7D1DD;
+}
+ /* custom background image */
+.image-responsive{
+    padding: 10px 0px 10px 0;
+    
+}

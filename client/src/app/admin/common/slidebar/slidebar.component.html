@@ -1,0 +1,58 @@
+<ul class="nav" id="side-menu">
+    <li class="sidebar-search">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+        </div>
+    </li>
+    <li>
+        <a routerLink="/admin/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-book fa-fw"></i> Quản lí tin tuyển dụng<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a routerLink="/admin/listnews">Danh sách tin tuyển dụng</a>
+            </li>
+            <li>
+                <a routerLink="/admin/formnews">Đăng tin tuyển dụng</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a routerLink="/admin/listcandidate"><i class="fa fa-user"></i> Quản lí ứng viên</a>
+    </li>
+    <li>
+        <a routerLink="/admin/listuser"><i class="fa fa-users fa-fw"></i> Quản lí người dùng</a>
+    </li>
+
+    <li>
+        <a href="#"><i class="fa fa-support fa-fw"></i> Quản lí Point thưởng<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a routerLink="/admin/listchinhsach">Chính sách point thưởng</a>
+            </li>
+            <li>
+                <a routerLink="/admin/listshared">Danh sách point thưởng đã chi</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-cart-plus fa-fw"></i> Quản lí danh mục shopping <span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a routerLink="/admin/listcatagory">Danh sách thể loại</a>
+            </li>
+            <li>
+                <a routerLink="/admin/listproduct">Danh sách quà quy đổi</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+</ul>
